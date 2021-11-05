@@ -1,6 +1,7 @@
 package com.car_rental.project.model;
 
 import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
