@@ -15,15 +15,17 @@ public class Rental {
     @Id
     private int id;
 
-    @Column(name = "id_employee")
-    private int idEmployee;
+    @OneToOne
+    @JoinColumn(name = "id_employee", referencedColumnName="id")
+    private Employee idEmployee;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "rental_date")
     private Date rentalDate;
 
-    @Column(name = "id_booking")
-    private int idBooking;
+    @OneToOne
+    @JoinColumn(name = "id_booking", referencedColumnName="id")
+    private Booking idBooking;
 
     private String comments;
 }

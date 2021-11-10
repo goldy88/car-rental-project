@@ -16,15 +16,17 @@ public class Return {
     @Id
     private int id;
 
-    @Column(name = "employee_nr")
-    private int employeeNr;
+    @OneToOne
+    @JoinColumn(name = "employee_nr", referencedColumnName="id")
+    private Employee employeeNr;
 
     @Column(name = "return_date")
     @Temporal(TemporalType.DATE)
     private Date returnDate;
 
-    @Column(name = "booking_nr")
-    private int bookingNr;
+    @OneToOne
+    @JoinColumn(name = "booking_nr", referencedColumnName="id")
+    private Booking bookingNr;
 
     @Column(name = "additional_payment")
     private int additionalPayment;

@@ -2,6 +2,7 @@ package com.car_rental.project.model;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -25,7 +26,12 @@ public class Car {
 
     private String status;
 
-    @Column(name = "branch_car")
-    private int branchCar;
+    @ManyToOne
+    @JoinColumn(name = "branch_car", referencedColumnName="id")
+    private Branch branchCar;
+
+    @OneToMany
+    @JoinColumn (name = "id_car")
+    private Set<Booking> bookings;
 
 }

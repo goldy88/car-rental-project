@@ -4,6 +4,7 @@ package com.car_rental.project.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -22,5 +23,9 @@ public class Customer {
 
     private String email;
     private String address;
+
+    @OneToMany
+    @JoinColumn (name = "id_customer")
+    private Set<Car> cars;
 
 }

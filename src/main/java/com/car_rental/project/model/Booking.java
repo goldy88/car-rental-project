@@ -17,11 +17,13 @@ public class Booking {
     @Temporal(TemporalType.DATE)
     private Date date;
 
-    @Column(name = "id_customer")
-    private int idCustomer;
+    @ManyToOne
+    @JoinColumn(name = "id_customer", referencedColumnName="id")
+    private Customer idCustomer;
 
-    @Column(name = "id_car")
-    private int idCar;
+    @ManyToOne
+    @JoinColumn(name = "id_car", referencedColumnName="id")
+    private Car idCar;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "booked_from")
@@ -36,6 +38,13 @@ public class Booking {
 
     @Column(name = "booking_amount")
     private int bookingAmount;
+
+    @OneToOne(mappedBy = "idBooking")
+    private Rental rental;
+
+    @OneToOne(mappedBy = "bookingNr")
+    private Return returned;
+
 
 
 }
