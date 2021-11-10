@@ -12,7 +12,7 @@ public class Booking {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
+    private Long id;
 
     @Temporal(TemporalType.DATE)
     private Date date;

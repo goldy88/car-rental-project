@@ -1,7 +1,7 @@
 package com.car_rental.project.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.hibernate.mapping.List;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -9,6 +9,7 @@ import java.util.Set;
 @Entity
 @Data
 @Table(name = "rental_office")
+@AllArgsConstructor
 public class RentalOffice {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +24,17 @@ public class RentalOffice {
     @JoinColumn (name = "id_rental_office")
     private Set<Branch> branches;
 
+
+    @Override
+    public String toString(){
+        return "RentalOffice{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", owner='" + owner + '\'' +
+                ", logotype='" + logotype + '\'' +
+                '}';
+    }
+
+
 }
+
