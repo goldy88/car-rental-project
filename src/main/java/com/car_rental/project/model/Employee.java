@@ -19,7 +19,14 @@ public class Employee {
 
     private String position;
 
-    @Column(name = "id_branch")
-    private int idBranch;
+    @ManyToOne
+    @JoinColumn(name = "id_branch", referencedColumnName="id")
+    private Branch idBranch;
+
+    @OneToOne(mappedBy = "idEmployee")
+    private Rental rentalEmployee;
+
+    @OneToOne(mappedBy = "employeeNr")
+    private Return returnEmployee;
 
 }
