@@ -13,7 +13,7 @@ public class Rental {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
+    private Long id;
 
     @OneToOne
     @JoinColumn(name = "id_employee", referencedColumnName="id")

@@ -1,17 +1,20 @@
 package com.car_rental.project.model;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Data
 @Table(name = "car")
+@Accessors(chain = true)
 public class Car {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
+    private Long id;
 
     private String make;
 
