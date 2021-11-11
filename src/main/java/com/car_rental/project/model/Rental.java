@@ -28,4 +28,5 @@ public class Rental {
     private Booking idBooking;
 
     private String comments;
+
 }

@@ -39,6 +39,10 @@ public class Booking {
     @Column(name = "booking_amount")
     private int bookingAmount;
 
+    @OneToOne
+    @JoinColumn(name = "rental_branch", referencedColumnName="branch_car")
+    private Car rentalBranch;
+
     @OneToOne(mappedBy = "idBooking")
     private Rental rental;
 
