@@ -26,6 +26,6 @@ public class Customer {
 
     @OneToMany
     @JoinColumn (name = "id_customer")
-    private Set<Car> cars;
+    private Set<Booking> bookings;
 
 }

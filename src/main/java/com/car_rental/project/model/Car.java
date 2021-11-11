@@ -37,4 +37,7 @@ public class Car {
     @JoinColumn (name = "id_car")
     private Set<Booking> bookings;
 
+    @OneToOne(mappedBy = "rentalBranch")
+    private Booking bookingBranch;
+
 }

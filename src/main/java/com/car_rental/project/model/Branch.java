@@ -24,7 +24,7 @@ public class Branch {
     private Set<Employee> employees;
 
     @OneToMany
-    @JoinColumn (name = "id_branch")
+    @JoinColumn (name = "branch_car")
     private Set<Car> cars;
 
 }
