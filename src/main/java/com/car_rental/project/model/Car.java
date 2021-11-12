@@ -1,5 +1,6 @@
 package com.car_rental.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -30,6 +31,7 @@ public class Car {
     private String status;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "branch_car", referencedColumnName="id")
     private Branch branchCar;
 

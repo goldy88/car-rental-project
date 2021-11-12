@@ -1,6 +1,6 @@
 package com.car_rental.project.model;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,6 +20,7 @@ public class Employee {
     private String position;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "id_branch", referencedColumnName="id")
     private Branch idBranch;
 

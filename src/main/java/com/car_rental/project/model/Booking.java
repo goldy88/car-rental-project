@@ -1,5 +1,6 @@
 package com.car_rental.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,10 +19,12 @@ public class Booking {
     private Date date;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "id_customer", referencedColumnName="id")
     private Customer idCustomer;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "id_car", referencedColumnName="id")
     private Car idCar;
 
@@ -48,7 +51,5 @@ public class Booking {
 
     @OneToOne(mappedBy = "bookingNr")
     private Return returned;
-
-
 
 }

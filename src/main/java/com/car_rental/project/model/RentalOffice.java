@@ -24,6 +24,8 @@ public class RentalOffice {
     @JoinColumn (name = "id_rental_office")
     private Set<Branch> branches;
 
+    public RentalOffice() {
+    }
 
     @Override
     public String toString(){
