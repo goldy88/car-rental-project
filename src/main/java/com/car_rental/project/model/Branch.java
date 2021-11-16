@@ -31,9 +31,9 @@ public class Branch {
     @JoinColumn (name = "id_branch")
     private Set<Employee> employees;
 
-    @OneToMany
+    /* @OneToMany
     @JsonIgnore
-    @JoinColumn (name = "branch_car")
-    private Set<Car> cars;
+    @JoinColumn (name = "car_branch")
+    private Set<Car> cars; */
 
 }

@@ -65,10 +65,10 @@ CREATE TABLE `car` (
                        `mileage` int NOT NULL,
                        `status` varchar(45) NOT NULL,
                        `amount` int DEFAULT NULL,
-                       `branch_car` bigint NOT NULL,
+                       `car_branch` bigint NOT NULL,
                        PRIMARY KEY (`id`),
 
-                       CONSTRAINT `branch_car` FOREIGN KEY (`branch_car`) REFERENCES `branch` (`id`)
+                       CONSTRAINT `car_branch` FOREIGN KEY (`car_branch`) REFERENCES `branch` (`id`)
 );
 
 INSERT INTO `car` VALUES

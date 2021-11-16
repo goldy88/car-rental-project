@@ -1,16 +1,19 @@
 package com.car_rental.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.experimental.Accessors;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "car")
-@Accessors(chain = true)
+
 public class Car {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +35,8 @@ public class Car {
 
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "branch_car", referencedColumnName="id")
-    private Branch branchCar;
+    @JoinColumn(name = "car_branch", referencedColumnName="id")
+    private Branch branch;
 
     @OneToMany
     @JoinColumn (name = "id_car")

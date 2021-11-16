@@ -18,7 +18,7 @@ public class BranchService {
 
     public BranchService(BranchRepository branchRepository, EmployeeRepository employeeRepository) {
         this.branchRepository = branchRepository;
-        this.employeeRepository = employeeRepository;
+       this.employeeRepository = employeeRepository;
     }
 
     public List<Branch> findAll() {
@@ -26,7 +26,7 @@ public class BranchService {
     }
 
     public List<Employee> getEmployeesByBranchId(Long branchId) {
-        return employeeRepository.findAllByIdBranch_Id(branchId);
+      return employeeRepository.findAllByIdBranch_Id(branchId);
     }
 
 }
