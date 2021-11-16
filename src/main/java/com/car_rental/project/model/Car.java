@@ -33,16 +33,17 @@ public class Car {
 
     private String status;
 
-    @ManyToOne
+    @OneToOne
     @JsonIgnore
     @JoinColumn(name = "car_branch", referencedColumnName="id")
     private Branch branch;
 
-    @OneToMany
-    @JoinColumn (name = "id_car")
-    private Set<Booking> bookings;
 
-    @OneToOne(mappedBy = "rentalBranch")
-    private Booking bookingBranch;
+    /* @OneToMany
+    @JoinColumn (name = "id_car")
+    private Set<Booking> bookings;*/
+
+    /*@OneToOne(mappedBy = "rentalBranch")
+    private Booking bookingBranch;*/
 
 }

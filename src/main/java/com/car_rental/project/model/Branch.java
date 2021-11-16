@@ -26,10 +26,10 @@ public class Branch {
     @JoinColumn(name = "id_rental_office", referencedColumnName="id")
     private RentalOffice idRentalOffice;
 
-    @OneToMany
+    /* @OneToMany
     @JsonIgnore
     @JoinColumn (name = "id_branch")
-    private Set<Employee> employees;
+    private Set<Employee> employees; */
 
     /* @OneToMany
     @JsonIgnore

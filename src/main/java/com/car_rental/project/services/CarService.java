@@ -25,8 +25,10 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    public List<Car> getCarsByCarBranch(Long carBranch) {
+    public List<Car> getAvailableCarsByBranch(Long carBranch) {
 
-        return carRepository.findAllByCarBranch_Id(carBranch);
+        return carRepository.findAvailableCarsByBranch_Id(carBranch, "available");
     }
 }
+
+

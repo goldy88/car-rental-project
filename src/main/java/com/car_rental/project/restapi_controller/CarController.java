@@ -33,7 +33,9 @@ public class CarController {
     @GetMapping(path = "/branch/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Car> getCarInBranch (@PathVariable Long id) {
 
-        return carService.getCarsByCarBranch(id);
+        return carService.getAvailableCarsByBranch(id);
     }
+
+
 
 }

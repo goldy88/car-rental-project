@@ -10,8 +10,8 @@ CREATE TABLE `rental_office` (
                                  `logotype` varchar(45) DEFAULT NULL,
                                  PRIMARY KEY (`id`)
 );
-INSERT INTO `rental_office` VALUES
-    (1,'Bavis','www.bavis.com','Me, myself & I',NULL);
+INSERT INTO `rental_office` (name, domain, owner, logotype) VALUES
+    ('Bavis','www.bavis.com','Me, myself & I',NULL);
 
 DROP TABLE IF EXISTS `branch`;
 
@@ -25,10 +25,10 @@ CREATE TABLE `branch` (
 );
 
 
-INSERT INTO `branch` VALUES
-                         (1,'Na vlachovce 15, 11150 Praha',1),
-                         (2,'Sedlácká 12, 60200 Brno',1),
-                         (3,'Nová Rožňavská 136, 83104 Bratislava',1);
+INSERT INTO `branch` (address, id_rental_office) VALUES
+                         ('Na vlachovce 15, 11150 Praha',1),
+                         ('Sedlácká 12, 60200 Brno',1),
+                         ('Nová Rožňavská 136, 83104 Bratislava',1);
 
 DROP TABLE IF EXISTS `employee`;
 
@@ -42,16 +42,16 @@ CREATE TABLE `employee` (
                             CONSTRAINT `id_branch` FOREIGN KEY (`id_branch`) REFERENCES `branch` (`id`)
 );
 
-INSERT INTO `employee` VALUES
-                           (1,'Daniel Goldmann','manager',1),
-                           (2,'Jan Podřízený','employee',1),
-                           (3,'Petr Pěšák','employee',1),
-                           (4,'Michal Šlambera','manager',2),
-                           (5,'Bob Klepl','employee',2),
-                           (6,'Jan Kraus','employee',2),
-                           (7,'Ivan Sládeček','manager',3),
-                           (8,'Róbert Fico','employee',3),
-                           (9,'Patrik Vrbovský','employee',3);
+INSERT INTO `employee` (name_and_surname, position, id_branch) VALUES
+                           ('Daniel Goldmann','manager',1),
+                           ('Jan Podřízený','employee',1),
+                           ('Petr Pěšák','employee',1),
+                           ('Michal Šlambera','manager',2),
+                           ('Bob Klepl','employee',2),
+                           ('Jan Kraus','employee',2),
+                           ('Ivan Sládeček','manager',3),
+                           ('Róbert Fico','employee',3),
+                           ('Patrik Vrbovský','employee',3);
 
 DROP TABLE IF EXISTS `car`;
 
@@ -71,16 +71,16 @@ CREATE TABLE `car` (
                        CONSTRAINT `car_branch` FOREIGN KEY (`car_branch`) REFERENCES `branch` (`id`)
 );
 
-INSERT INTO `car` VALUES
-                      (1,'Ford','Focus','hatchback',2018,'blue',78000,'available',70,1),
-                      (2,'BMW','7ixDrive','sedan',2020,'silver',52000,'available',190,1),
-                      (3,'Škoda','Superb','combi',2019,'black',64000,'available',120,1),
-                      (4,'Kia','Ceed','combi',2018,'white',45000,'available',85,2),
-                      (5,'Toyota','Yaris','hatchback',2020,'red',37000,'available',55,2),
-                      (6,'Škoda','Octavia','sedan',2017,'grey',110000,'unavailable',90,2),
-                      (7,'Kia','Ceed','combi',2019,'blue',48000,'available',85,3),
-                      (8,'Toyota','Yaris','hatchback',2020,'silver',29000,'unavailable',55,3),
-                      (9,'Škoda','Octavia','sedan',2021,'green',15000,'available',90,3);
+INSERT INTO `car` (make, model, body_type, year, color, mileage, status, amount, car_branch) VALUES
+                      ('Ford','Focus','hatchback',2018,'blue',78000,'available',70,1),
+                      ('BMW','7ixDrive','sedan',2020,'silver',52000,'available',190,1),
+                      ('Škoda','Superb','combi',2019,'black',64000,'available',120,1),
+                      ('Kia','Ceed','combi',2018,'white',45000,'available',85,2),
+                      ('Toyota','Yaris','hatchback',2020,'red',37000,'available',55,2),
+                      ('Škoda','Octavia','sedan',2017,'grey',110000,'unavailable',90,2),
+                      ('Kia','Ceed','combi',2019,'blue',48000,'available',85,3),
+                      ('Toyota','Yaris','hatchback',2020,'silver',29000,'unavailable',55,3),
+                      ('Škoda','Octavia','sedan',2021,'green',15000,'available',90,3);
 
 DROP TABLE IF EXISTS `customer`;
 
@@ -93,10 +93,10 @@ CREATE TABLE `customer` (
                             PRIMARY KEY (`id`)
 );
 
-INSERT INTO `customer` VALUES
-                           (1,'Pepa','Zákazník','pepazak@seznam.cz','Jarní 67, 11150 Praha'),
-                           (2,'Milada','Klientská','milada_kk@gmail.com','Neštovická 50, 61800 Brno'),
-                           (3,'Boris','Kollár','boris_kollar@nrsr.sk','Strmé Vrchy 13, 81300 Bratislava');
+INSERT INTO `customer` (first_name, last_name, email, address) VALUES
+                           ('Pepa','Zákazník','pepazak@seznam.cz','Jarní 67, 11150 Praha'),
+                           ('Milada','Klientská','milada_kk@gmail.com','Neštovická 50, 61800 Brno'),
+                           ('Boris','Kollár','boris_kollar@nrsr.sk','Strmé Vrchy 13, 81300 Bratislava');
 
 
 DROP TABLE IF EXISTS `booking`;
