@@ -1,13 +1,19 @@
 package com.car_rental.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "booking")
 public class Booking {
 
@@ -36,15 +42,19 @@ public class Booking {
     @Column(name = "booked_to")
     private Date bookedTo;
 
+    @Column(name = "rental_branch")
+    private Long rentalBranch;
+
     @Column(name = "return_branch")
-    private int return_branch;
+    private Long returnBranch;
 
     @Column(name = "booking_amount")
     private int bookingAmount;
 
-    @OneToOne
+
+    /*@OneToOne
     @JoinColumn(name = "rental_branch", referencedColumnName="car_branch")
-    private Car rentalBranch;
+    private Car rentalBranch;*/
 
     @OneToOne(mappedBy = "idBooking")
     private Rental rental;

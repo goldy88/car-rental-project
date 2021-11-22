@@ -109,15 +109,13 @@ CREATE TABLE `booking`
     `id_car`         bigint  NOT NULL,
     `booked_from`    date NOT NULL,
     `booked_to`      date NOT NULL,
-    `return_branch`  int  NOT NULL,
+    `rental_branch`  bigint NOT NULL,
+    `return_branch`  bigint NOT NULL,
     `booking_amount` int DEFAULT NULL,
-    `rental_branch`  bigint DEFAULT NULL,
     PRIMARY KEY (`id`),
 
     CONSTRAINT `id_car` FOREIGN KEY (`id_car`) REFERENCES `car` (`id`),
-    CONSTRAINT `id_customer` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`),
-    CONSTRAINT `rental_branch` FOREIGN KEY (`rental_branch`) REFERENCES `car` (`id`),
-    CONSTRAINT `return_branch` FOREIGN KEY (`return_branch`) REFERENCES `car` (`id`)
+    CONSTRAINT `id_customer` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`)
 );
 
 
