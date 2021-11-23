@@ -8,10 +8,12 @@ import com.car_rental.project.repository.BookingRepository;
 import com.car_rental.project.repository.CarRepository;
 import com.car_rental.project.repository.CustomerRepository;
 import com.car_rental.project.util.DateHelper;
+import com.car_rental.project.util.DaysCalculator;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 @Service
 public class BookingService {
@@ -20,31 +22,53 @@ public class BookingService {
     private final CustomerRepository customerRepository;
     private final CarRepository carRepository;
 
+    private static final int returnAtOtherBranchFee = 50;
+
+
     public BookingService(BookingRepository bookingRepository, CustomerRepository customerRepository, CarRepository carRepository) {
         this.bookingRepository = bookingRepository;
         this.customerRepository = customerRepository;
         this.carRepository = carRepository;
     }
 
-    public Booking createBooking(BookingRequest bookingRequest){
+    public Booking createBooking(BookingRequest bookingRequest) {
 
         Customer idCustomer = customerRepository.getById(bookingRequest.getIdCustomer());
-        Car idCar = carRepository.getById(bookingRequest.getIdCar());
+        Car car = carRepository.getById(bookingRequest.getIdCar());
 
         // túto premennú idCustomer budeme brať potom z BookingRequets z nejakej metódy getCustomerId (obyčajný getter)
+
+        Long calculatedBookingAmount = calculateBookingAmount(car.getPrice(), bookingRequest);
 
         Booking booking = Booking.builder()
                 .date(new Date())
                 .idCustomer(idCustomer)
-                .idCar(idCar)
+                .idCar(car)
                 .bookedFrom(DateHelper.stringToDate(bookingRequest.getBookedFrom()))
                 .bookedTo(DateHelper.stringToDate(bookingRequest.getBookedTo()))
                 .rentalBranch(bookingRequest.getIdRentalBranch())
                 .returnBranch(bookingRequest.getIdReturnBranch())
-                .bookingAmount(0)
+                .bookingAmount(calculatedBookingAmount)
                 .build();
 
-      return bookingRepository.save(booking);
+        return bookingRepository.save(booking);
 
     }
-}
+
+      public Long calculateBookingAmount(Long bookingPrice, BookingRequest bookingRequest){
+
+         Double numberOfDays = DaysCalculator.calculateNumberOfDaysInBooking(bookingRequest);
+
+         Long bookingAmount = Math.round(numberOfDays * bookingPrice);
+
+         if (!Objects.equals(bookingRequest.getIdRentalBranch(), bookingRequest.getIdReturnBranch())) {
+
+             bookingAmount += returnAtOtherBranchFee;
+         }
+
+         return bookingAmount;
+
+        }
+
+    }
+

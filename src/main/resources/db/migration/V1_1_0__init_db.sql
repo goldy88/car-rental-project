@@ -64,14 +64,14 @@ CREATE TABLE `car` (
                        `color` varchar(45) NOT NULL,
                        `mileage` int NOT NULL,
                        `status` varchar(45) NOT NULL,
-                       `amount` int DEFAULT NULL,
+                       `price` bigint NOT NULL,
                        `car_branch` bigint NOT NULL,
                        PRIMARY KEY (`id`),
 
                        CONSTRAINT `car_branch` FOREIGN KEY (`car_branch`) REFERENCES `branch` (`id`)
 );
 
-INSERT INTO `car` (make, model, body_type, year, color, mileage, status, amount, car_branch) VALUES
+INSERT INTO `car` (make, model, body_type, year, color, mileage, status, price, car_branch) VALUES
                       ('Ford','Focus','hatchback',2018,'blue',78000,'available',70,1),
                       ('BMW','7ixDrive','sedan',2020,'silver',52000,'available',190,1),
                       ('Škoda','Superb','combi',2019,'black',64000,'available',120,1),
@@ -111,7 +111,7 @@ CREATE TABLE `booking`
     `booked_to`      date NOT NULL,
     `rental_branch`  bigint NOT NULL,
     `return_branch`  bigint NOT NULL,
-    `booking_amount` int DEFAULT NULL,
+    `booking_amount` bigint DEFAULT NULL,
     PRIMARY KEY (`id`),
 
     CONSTRAINT `id_car` FOREIGN KEY (`id_car`) REFERENCES `car` (`id`),

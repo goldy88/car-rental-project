@@ -49,7 +49,7 @@ public class Booking {
     private Long returnBranch;
 
     @Column(name = "booking_amount")
-    private int bookingAmount;
+    private Long bookingAmount;
 
 
     /*@OneToOne

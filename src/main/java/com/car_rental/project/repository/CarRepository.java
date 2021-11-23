@@ -19,5 +19,6 @@ public interface CarRepository extends JpaRepository<Car, Long> {
             value= "SELECT c FROM Car c WHERE c.status = :status")
     List<Car> getCarsByStatus(String status);
 
+
     }
 

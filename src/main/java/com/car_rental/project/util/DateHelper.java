@@ -18,7 +18,7 @@ public class DateHelper {
 
         try {
 
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy H:m", Locale.ENGLISH);
 
             Date date = formatter.parse(dateInput);
 

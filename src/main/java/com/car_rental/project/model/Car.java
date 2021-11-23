@@ -33,6 +33,8 @@ public class Car {
 
     private String status;
 
+    private Long price;
+
     @OneToOne
     @JsonIgnore
     @JoinColumn(name = "car_branch", referencedColumnName="id")
