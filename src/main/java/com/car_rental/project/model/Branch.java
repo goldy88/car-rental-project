@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Data
@@ -19,6 +18,7 @@ public class Branch {
     @Id
     private Long id;
 
+    @Column(name = "address")
     private String address;
 
     @ManyToOne
