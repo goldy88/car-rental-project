@@ -48,7 +48,7 @@
             <th>
                 <a>Price</a>
             </th>
-          <th>
+            <th>
                 <a>Car branch</a>
             </th>
 
@@ -70,10 +70,8 @@
             <td th:text="${car.branch.address}"></td>
 
 
-
             <td><a th:href="@{/showFormForUpdate3/{id}(id=${car.id})}" class="btn btn-primary">Update</a>
                 <a th:href="@{/deleteCar/{id}(id=${car.id})}" class="btn btn-danger">Delete</a>
-
 
             </td>
         </tr>
@@ -81,6 +79,5 @@
     </table>
 </div>
 </body>
-
         <a th:href="@{/signpost}" class="btn btn-primary btn-sm mb-3"> back to signpost </a>
 </html>
