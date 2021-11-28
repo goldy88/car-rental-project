@@ -18,37 +18,35 @@
 
 <body>
 
-
 <div class="jumbotron text-center">
     <h1>Please choose from the following options</h1>
 </div>
 
-
 <div class="card-deck">
     <div class="card">
-        <img src="/static/employees.jpg" class="card-img-top" alt="...">
+        <img src="employees.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title"></h5>
             <p class="card-text">This section is used to work with employees</p>
-            <a href="#" class="btn btn-primary">Employee management</a>
+            <a th:href="@{employeemanagement}" class="btn btn-primary">Employee management</a>
         </div>
     </div>
 
     <div class="card">
-        <img src="/static/cars.jpg" class="card-img-top" alt="...">
+        <img th:src="@{cars.jpg}" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title"></h5>
             <p class="card-text">This section is used to work with cars</p>
-            <a href="#" class="btn btn-primary">Car manager</a>
+            <a th:href="@{BranchManagement}" class="btn btn-primary">Car manager</a>
         </div>
     </div>
 
     <div class="card">
-        <img src="/static/branches.png"class="card-img-top" alt="...">
+        <img th:src="@{branches.png}" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
+            <h5 class="card-title"></h5>
             <p class="card-text">this section is used to work with branches</p>
-            <a href="#" class="btn btn-primary">Branch management</a>
+            <a th:href="@{BranchManagement}" class="btn btn-primary">Branch management</a>
         </div>
     </div>
 

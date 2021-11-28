@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Data
@@ -14,6 +15,7 @@ public class Employee {
     @Id
     private Long id;
 
+    @Size(max = 10)
     @Column(name = "name_and_surname")
     private String nameAndSurname;
 
