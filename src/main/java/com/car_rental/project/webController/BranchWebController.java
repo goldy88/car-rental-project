@@ -16,7 +16,7 @@ public class BranchWebController {
     @Autowired
     private BranchWebService branchWebService;
 
-
+    // display list of branch
     @GetMapping("/BranchManagement")
     public String viewHomePage(Model model) {
         model.addAttribute("listBranch", branchWebService.getAllBranch());

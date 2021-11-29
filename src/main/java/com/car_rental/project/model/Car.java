@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Data
@@ -30,6 +29,8 @@ public class Car {
     private int year;
 
     private String color;
+
+    private int mileage;
 
     private String status;
 
