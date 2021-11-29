@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -67,6 +68,19 @@ public class BookingService {
          }
 
          return bookingAmount;
+
+        }
+
+        public List<Car> showCarsForGivenDates(String dateFrom, String dateTo){
+
+            Date dateFromObject = DateHelper.stringToDate(dateFrom);
+            Date dateToObject = DateHelper.stringToDate(dateTo);
+
+            return carRepository.findAvailableCarsOnGivenDate(dateFromObject, dateToObject, "available");
+
+        // druhý možný zápis:
+        // return carRepository.findAvailableCarsOnGivenDate(DateHelper.stringToDate(dateFrom),
+            // DateHelper.stringToDate(dateTo), "available");
 
         }
 

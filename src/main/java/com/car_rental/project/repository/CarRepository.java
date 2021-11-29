@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -19,6 +20,10 @@ public interface CarRepository extends JpaRepository<Car, Long> {
             value= "SELECT c FROM Car c WHERE c.status = :status")
     List<Car> getCarsByStatus(String status);
 
+    @Query(
+            value = "SELECT c FROM Car c JOIN Booking b ON c.id = b.idCar.id WHERE b.bookedFrom <= :bookedFrom AND " +
+                    "b.bookedTo >= :bookedTo AND c.status = :status")
+    List<Car> findAvailableCarsOnGivenDate(Date bookedFrom, Date bookedTo, String status);
 
     }
 
