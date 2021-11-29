@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Booking step two</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+</head>
+<body>
+
+<h1> Choose a car and finish the booking: </h1>
+<form th:action="@{/booking/step/three}" method="post">
+
+    <p>Please select your car:</p>
+    <div th:each="car: ${listOfCars}">
+        <input type="radio" id="html" name="bookedCarId" value="${car.id}">
+        <label for="html"><th:block th:text="${car.make} ${car.model} ${car.bodyType} ${car.year} ${car.color} ${car.price} ${car.branch.id} ${car.branch.address}"></th:block></label><br>
+    </div>
+
+    <section>
+        <div class="container">
+
+                <label>
+                    customerEmail:
+                    <input type="email" name="customerEmail">
+                </label>
+
+                <label>
+                    bookedFrom:
+                    <input type="text" name="bookedFrom" value="${bookedFrom}" disabled>
+                </label>
+
+                <label>
+                    bookedTo:
+                    <input type="text" name="bookedTo" value="${bookedTo}" disabled>
+                </label>
+
+
+            <div>
+                <label for="returnBranch">Choose a branch for return the car:</label>
+
+                <select name="returnBranch">
+                    <option th:each="branch: ${listOfBranches}" th:value="${branch.id}" th:text="${branch.address}">
+                    </option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <input type="submit" name="Send-booking" id="send-booking"
+                       class="form-control btn btn-primary" value="Send booking" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+</body>
+</html>
