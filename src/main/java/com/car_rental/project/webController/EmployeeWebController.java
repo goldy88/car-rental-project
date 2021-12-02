@@ -36,7 +36,7 @@ public class EmployeeWebController {
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
         model.addAttribute("branches", branches);
-        return "new_employee";
+        return "new-employee";
     }
 
 
@@ -56,7 +56,7 @@ public class EmployeeWebController {
         //set employee as a model attribute to pre-populate the form
         model.addAttribute("employee", employee);
         model.addAttribute("branches", branches);
-        return "update_employee";
+        return "update-employee";
     }
 
     @GetMapping("/deleteEmployee/{id}")

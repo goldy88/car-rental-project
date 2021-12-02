@@ -29,7 +29,7 @@ public class BranchWebController {
         // create model attribute to bind form data
         Branch branch = new Branch();
         model.addAttribute("branch", branch);
-        return "new_branch";
+        return "new-branch";
     }
 
     @PostMapping("/saveBranch")
@@ -46,7 +46,7 @@ public class BranchWebController {
 
         //set branch as a model attribute to pre-populate the form
         model.addAttribute("branch", branch);
-        return "update_branch";
+        return "update-branch";
     }
 
     @GetMapping("/deleteBranch/{id}")
