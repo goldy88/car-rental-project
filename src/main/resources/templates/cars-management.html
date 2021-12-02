@@ -7,16 +7,12 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
 </head>
-
 <body>
 
 <div class="container my-2">
     <h1>Cars list</h1>
-
     <a th:href="@{/showNewCarForm}" class="btn btn-primary btn-sm mb-3"> Add car </a>
-
 
     <table border="1" class="table table-striped table-responsive-md">
         <thead>
@@ -51,12 +47,12 @@
             <th>
                 <a>Car branch</a>
             </th>
-
-            <th> Actions</th>
-                    </tr>
+            <th>
+                <a>Actions</a>
+            </th>
+        </tr>
         </thead>
         <tbody>
-
         <tr th:each="car : ${listCars}">
             <td th:text="${car.id}"></td>
             <td th:text="${car.make}"></td>
@@ -68,16 +64,14 @@
             <td th:text="${car.status}"></td>
             <td th:text="${car.price}"></td>
             <td th:text="${car.branch.address}"></td>
-
-
-            <td><a th:href="@{/showFormForUpdate3/{id}(id=${car.id})}" class="btn btn-primary">Update</a>
+            <td>
+                <a th:href="@{/showFormForUpdate3/{id}(id=${car.id})}" class="btn btn-primary">Update</a>
                 <a th:href="@{/deleteCar/{id}(id=${car.id})}" class="btn btn-danger">Delete</a>
-
             </td>
         </tr>
         </tbody>
     </table>
+    <a th:href="@{/signpost}" class="btn btn-primary btn-sm mb-3"> back to signpost </a>
 </div>
 </body>
-        <a th:href="@{/signpost}" class="btn btn-primary btn-sm mb-3"> back to signpost </a>
 </html>
