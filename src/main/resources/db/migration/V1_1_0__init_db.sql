@@ -115,7 +115,9 @@ CREATE TABLE `booking`
     PRIMARY KEY (`id`),
 
     CONSTRAINT `id_car` FOREIGN KEY (`id_car`) REFERENCES `car` (`id`),
-    CONSTRAINT `id_customer` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`)
+    CONSTRAINT `id_customer` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`),
+    CONSTRAINT `rental_branch` FOREIGN KEY (`rental_branch`) REFERENCES `branch` (`id`),
+    CONSTRAINT `return_branch` FOREIGN KEY (`return_branch`) REFERENCES `branch` (`id`)
 );
 
 

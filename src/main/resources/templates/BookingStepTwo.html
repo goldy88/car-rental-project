@@ -12,13 +12,16 @@
 </head>
 <body>
 
-<h1> Choose a car and finish the booking: </h1>
-<form th:action="@{/booking/step/three}" method="post">
+<h1> Pick a car and finish the booking: </h1>
+<form th:action="@{/rentcar/booking/step/final}" method="post">
 
     <p>Please select your car:</p>
     <div th:each="car: ${listOfCars}">
-        <input type="radio" id="html" name="bookedCarId" value="${car.id}">
-        <label for="html"><th:block th:text="${car.make} ${car.model} ${car.bodyType} ${car.year} ${car.color} ${car.price} ${car.branch.id} ${car.branch.address}"></th:block></label><br>
+        <input type="radio" id="html" name="bookedCarId" th:value="${car.id}">
+        <label for="html" th:text="${car.make + ' ' + car.model + ' ' + car.bodyType + ' ' + car.year + ', color: '
+        + car.color + ', ' + car.price + ' eur per day, currently on branch: ' + car.branch.id + '- '
+        + car.branch.address}"></label><br>
+
     </div>
 
     <section>
@@ -31,17 +34,17 @@
 
                 <label>
                     bookedFrom:
-                    <input type="text" name="bookedFrom" value="${bookedFrom}" disabled>
+                    <input type="text" name="bookedFrom" th:value="${bookedFrom}" readonly="readonly">
                 </label>
 
                 <label>
                     bookedTo:
-                    <input type="text" name="bookedTo" value="${bookedTo}" disabled>
+                    <input type="text" name="bookedTo" th:value="${bookedTo}" readonly="readonly">
                 </label>
 
 
             <div>
-                <label for="returnBranch">Choose a branch for return the car:</label>
+                <label for="returnBranch">Pick a branch where you want to return the car:</label>
 
                 <select name="returnBranch">
                     <option th:each="branch: ${listOfBranches}" th:value="${branch.id}" th:text="${branch.address}">

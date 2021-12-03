@@ -1,10 +1,9 @@
-package com.car_rental.project.restapi_controller;
+package com.car_rental.project.api_controller;
 
 import com.car_rental.project.dto.BookingRequest;
 import com.car_rental.project.dto.BookingResult;
 import com.car_rental.project.model.Booking;
 import com.car_rental.project.facade.CarFacade;
-import com.car_rental.project.model.Employee;
 import com.car_rental.project.repository.BookingRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/booking")
+@RequestMapping("rentcar/api/booking")
 @RequiredArgsConstructor
 
 public class BookingController {
