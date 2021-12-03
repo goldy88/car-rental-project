@@ -17,7 +17,7 @@ public class BranchWebController {
     private BranchWebService branchWebService;
 
     // display list of branch
-    @GetMapping("/BranchManagement")
+    @GetMapping("/rentcar/BranchManagement")
     public String viewHomePage(Model model) {
         model.addAttribute("listBranch", branchWebService.getAllBranch());
         return "BranchManagement";
@@ -36,7 +36,7 @@ public class BranchWebController {
     public String saveBranch(@ModelAttribute("branch") Branch branch) {
         //save branch to database
         branchWebService.saveBranch(branch);
-        return "redirect:/BranchManagement";
+        return "redirect:/rentcar/BranchManagement";
     }
 
     @GetMapping("/showFormForUpdate/{id}")
@@ -54,7 +54,7 @@ public class BranchWebController {
 
         //call delete branch method
         this.branchWebService.deleteBranchByID(id);
-        return "redirect:/BranchManagement";
+        return "redirect:/rentcar/BranchManagement";
     }
 
 
