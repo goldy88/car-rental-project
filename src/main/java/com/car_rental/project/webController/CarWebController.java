@@ -26,7 +26,7 @@ public class CarWebController {
     private BranchWebService branchWebService;
 
     // display list of cars
-    @GetMapping("/cars-management")
+    @GetMapping("/rentcar/cars/management")
     public String viewHomePage3(Model model) {
         model.addAttribute("listCars", carWebService.getAllCars());
         return "cars-management";
@@ -47,7 +47,7 @@ public class CarWebController {
     public String saveCar(@ModelAttribute("car") @Valid Car car) {
         //save car to database
         carWebService.saveCar(car);
-        return "redirect:/cars-management";
+        return "redirect:/rentcar/cars/management";
     }
 
     @GetMapping("/showFormForUpdate3/{id}")
@@ -67,7 +67,7 @@ public class CarWebController {
 
         //call delete car method
         this.carWebService.deleteCarByID(id);
-        return "redirect:/cars-management";
+        return "redirect:/rentcar/cars/management";
     }
 
 

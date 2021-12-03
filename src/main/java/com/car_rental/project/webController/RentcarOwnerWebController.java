@@ -5,13 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class SignpostWebController {
+public class RentcarOwnerWebController {
 
 
 
-    @GetMapping("/signpost")
+    @GetMapping("/rentcar/owner")
     public String viewHomePage(Model model) {
-        return "signpost";
+        return "rentcarowner";
     }
 
 }

@@ -23,7 +23,7 @@ public class EmployeeWebController {
     private BranchWebService branchWebService;
 
     // display list of employees
-    @GetMapping("/employeemanagement")
+    @GetMapping("/rentcar/employeemanagement")
     public String viewHomePage2(Model model) {
             model.addAttribute("listEmployees", employeeWebService.getAllEmployees());
         return "employeemanagement";
@@ -44,7 +44,7 @@ public class EmployeeWebController {
     public String saveEmployee(@ModelAttribute("employee") @Valid Employee employee ) {
         //save employee to database
         employeeWebService.saveEmployee(employee);
-        return "redirect:/employeemanagement";
+        return "redirect:/rentcar/employeemanagement";
     }
 
     @GetMapping("/showFormForUpdate2/{id}")
@@ -64,7 +64,7 @@ public class EmployeeWebController {
 
         //call delete employee method
         this.employeeWebService.deleteEmployeeByID(id);
-        return "redirect:/employeemanagement";
+        return "redirect:/rentcar/employeemanagement";
     }
 
 

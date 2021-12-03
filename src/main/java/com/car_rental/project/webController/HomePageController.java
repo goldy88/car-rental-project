@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomePageController {
 
-    @GetMapping("/rentcar-homepage")
+    @GetMapping("/rentcar/homepage")
     public String viewHomePage(Model model) {
-        return "/rentcar-homepage";
+        return "rentcar-homepage";
     }
 
 }
