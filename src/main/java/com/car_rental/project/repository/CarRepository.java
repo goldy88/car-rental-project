@@ -21,8 +21,9 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     List<Car> getCarsByStatus(String status);
 
     @Query(
-            value = "SELECT c FROM Car c JOIN Booking b ON c.id = b.idCar.id WHERE b.bookedFrom <= :bookedFrom AND " +
-                    "b.bookedTo >= :bookedTo AND c.status = :status")
+            value = "SELECT c FROM Car c LEFT JOIN Booking b ON c.id = b.idCar.id WHERE (b.bookedFrom <= :bookedFrom AND " +
+                    "b.bookedTo >= :bookedTo) OR (b.bookedFrom is null AND b.bookedTo is null) AND (c.status = :status)")
+
     List<Car> findAvailableCarsOnGivenDate(Date bookedFrom, Date bookedTo, String status);
 
     }

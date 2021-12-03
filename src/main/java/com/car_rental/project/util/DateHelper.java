@@ -1,6 +1,5 @@
 package com.car_rental.project.util;
 
-import com.car_rental.project.restapi_controller.BookingController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +17,7 @@ public class DateHelper {
 
         try {
 
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yy", Locale.ENGLISH);
+            SimpleDateFormat formatter = new SimpleDateFormat("mm/dd/yy", Locale.ENGLISH);
                                                 // pôvodne sme tu mali: "dd-MM-yyyy H:m"
 
             Date date = formatter.parse(dateInput);

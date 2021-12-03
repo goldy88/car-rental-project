@@ -23,9 +23,10 @@ import java.util.Date;
 public class BookingStepTwoForm {
 
 
+
     private String customerEmail;
 
-    private Long bookedCarId;
+    private String bookedCarId;
 
     private String bookedFrom;
 

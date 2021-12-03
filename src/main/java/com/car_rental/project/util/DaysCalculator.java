@@ -1,6 +1,6 @@
 package com.car_rental.project.util;
 
-import com.car_rental.project.dto.BookingRequest;
+
 import com.car_rental.project.model.Booking;
 
 import java.util.Date;
@@ -8,15 +8,13 @@ import java.util.Date;
 public class DaysCalculator {
 
 
-    public static Double calculateNumberOfDaysInBooking(BookingRequest bookingRequest) {
+    public static Double calculateNumberOfDaysInBooking(String bookedFrom, String bookedTo) {
 
 
-        Date startOfBooking = DateHelper.stringToDate(bookingRequest.getBookedFrom());
-        Date endOfBooking = DateHelper.stringToDate(bookingRequest.getBookedTo());
+        Date startOfBooking = DateHelper.stringToDate(bookedFrom);
+        Date endOfBooking = DateHelper.stringToDate(bookedTo);
 
-        Double numberOfDays = ((endOfBooking.getTime() - startOfBooking.getTime()) / 1000D / 60 / 60 / 24);
-
-        return numberOfDays;
+        return ((endOfBooking.getTime() - startOfBooking.getTime()) / 1000D / 60 / 60 / 24);
 
     }
 }

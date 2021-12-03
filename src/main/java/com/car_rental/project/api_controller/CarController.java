@@ -1,4 +1,4 @@
-package com.car_rental.project.restapi_controller;
+package com.car_rental.project.api_controller;
 
 import com.car_rental.project.model.Car;
 import com.car_rental.project.services.CarService;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/car")
+@RequestMapping("rentcar/api/car")
 @RequiredArgsConstructor
 public class CarController {
 

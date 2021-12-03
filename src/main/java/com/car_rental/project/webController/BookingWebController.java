@@ -3,13 +3,13 @@ package com.car_rental.project.webController;
 
 import com.car_rental.project.dto.BookingRequest;
 import com.car_rental.project.dto.BookingResult;
+import com.car_rental.project.dto.BookingStepTwoForm;
 import com.car_rental.project.facade.CarFacade;
 import com.car_rental.project.model.Booking;
 import com.car_rental.project.model.Branch;
 import com.car_rental.project.model.Car;
 import com.car_rental.project.repository.BookingRepository;
 import com.car_rental.project.repository.BranchRepository;
-import com.car_rental.project.restapi_controller.BookingController;
 import com.car_rental.project.services.BookingService;
 import com.car_rental.project.services.BranchWebService;
 import lombok.RequiredArgsConstructor;
@@ -24,12 +24,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/booking/step")
 @RequiredArgsConstructor
 
-public class WebBookingController {
+public class BookingWebController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(WebBookingController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(BookingWebController.class);
 
     @Autowired
     private final CarFacade carFacade;
@@ -48,14 +47,14 @@ public class WebBookingController {
 
 
 
-    @GetMapping(path = "/one")
+    @GetMapping(path = "rentcar/booking/step/one")
 
     public String showBookingStepOne() {
 
         return "BookingStepOne";
     }
 
-    @PostMapping(path = "/two", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "rentcar/booking/step/two", produces = MediaType.APPLICATION_JSON_VALUE)
     public String showCars(final ModelMap modelMap, @ModelAttribute("from") String from, @ModelAttribute("to") String to) {
 
         LOGGER.debug("received dates from user from {} to {}", from, to);
@@ -73,11 +72,47 @@ public class WebBookingController {
         return "BookingStepTwo";
     }
 
-    @PostMapping("/saveBranch")
+    @PostMapping(path = "rentcar/booking/step/final", produces = MediaType.APPLICATION_JSON_VALUE)
+
+    public String saveBooking(final ModelMap modelMap, @ModelAttribute BookingStepTwoForm bookingStepTwoForm) {
+
+        LOGGER.debug("received data from booking step two form to {}", bookingStepTwoForm);
+
+        Booking booking = carFacade.bookCarOnWeb(bookingStepTwoForm);
+
+        modelMap.addAttribute("booking", booking);
+
+        LOGGER.debug("{} all cars for booking",booking);
+
+        return "BookingStepFinal";
+    }
+
+        /* modelMap.addAttribute("bookedFrom", from);
+        modelMap.addAttribute("bookedTo", to);
+        modelMap.addAttribute("listOfBranches", branchRepository.findAll()); */
+
+    /* TOTO JE Z API PRÍKLAD:
+    @GetMapping(path = "/result/customer/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+
+    public List<Booking> getAllCustomerBookings (@PathVariable Long id) {
+
+        return bookingRepository.findAllByIdCustomer_Id(id);
+    }
+     */
+
+    /* @PostMapping("/saveBranch")
     public String saveBranch(@ModelAttribute("branch") Branch branch) {
         //save branch to database
         branchWebService.saveBranch(branch);
         return "redirect:/BranchManagement";
+    } */
 
+
+    @GetMapping(path = "rentcar/homepage")
+
+    public String showHomepage() {
+
+        return "HomePage";
     }
+
 }

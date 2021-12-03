@@ -24,8 +24,8 @@ public class Customer {
     private String email;
     private String address;
 
-    @OneToMany
+    /* @OneToMany
     @JoinColumn (name = "id_customer")
-    private Set<Booking> bookings;
+    private Set<Booking> bookings; */
 
 }
