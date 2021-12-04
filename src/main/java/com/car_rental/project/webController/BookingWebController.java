@@ -87,32 +87,4 @@ public class BookingWebController {
         return "BookingStepFinal";
     }
 
-        /* modelMap.addAttribute("bookedFrom", from);
-        modelMap.addAttribute("bookedTo", to);
-        modelMap.addAttribute("listOfBranches", branchRepository.findAll()); */
-
-    /* TOTO JE Z API PRÍKLAD:
-    @GetMapping(path = "/result/customer/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-
-    public List<Booking> getAllCustomerBookings (@PathVariable Long id) {
-
-        return bookingRepository.findAllByIdCustomer_Id(id);
-    }
-     */
-
-    /* @PostMapping("/saveBranch")
-    public String saveBranch(@ModelAttribute("branch") Branch branch) {
-        //save branch to database
-        branchWebService.saveBranch(branch);
-        return "redirect:/BranchManagement";
-    } */
-
-
-    @GetMapping(path = "rentcar/homepage")
-
-    public String showHomepage() {
-
-        return "HomePage";
-    }
-
 }

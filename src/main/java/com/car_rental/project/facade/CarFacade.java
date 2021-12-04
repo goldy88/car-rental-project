@@ -5,8 +5,10 @@ import com.car_rental.project.dto.BookingResult;
 import com.car_rental.project.dto.BookingStepTwoForm;
 import com.car_rental.project.model.Booking;
 import com.car_rental.project.model.Branch;
+import com.car_rental.project.model.Car;
 import com.car_rental.project.model.Employee;
 import com.car_rental.project.repository.BranchRepository;
+import com.car_rental.project.repository.CarRepository;
 import com.car_rental.project.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
@@ -24,6 +26,9 @@ public class CarFacade {
     BranchRepository branchRepository;
 
     @Autowired
+    CarRepository carRepository;
+
+    @Autowired
     public CarFacade( BookingService bookingService) {
         this.bookingService = bookingService;
 
@@ -31,11 +36,7 @@ public class CarFacade {
 
     public BookingResult bookCar (BookingRequest bookingRequest){
 
-
-        // Optional<Branch> rentalBranch = branchRepository.findById(bookingRequest.getRentalBranch());
-        // Optional<Branch> returnBranch = branchRepository.findById(bookingRequest.getReturnBranch());
-
-        Booking booking =  bookingService.createBooking(bookingRequest); //rentalBranch, returnBranch
+        Booking booking =  bookingService.createBooking(bookingRequest);
 
         BookingResult bookingResult = new BookingResult(booking);
 
@@ -44,9 +45,16 @@ public class CarFacade {
 
     public Booking bookCarOnWeb (BookingStepTwoForm bookingStepTwoForm){
 
-        Booking booking =  bookingService.createBookingOnWeb(bookingStepTwoForm); //rentalBranch, returnBranch
+        Booking booking =  bookingService.createBookingOnWeb(bookingStepTwoForm);
 
 
+       /*  Car car = booking.getIdCar();
+        car.setBranch(booking.getReturnBranch());
+        carRepository.save(car);
+
+        metóda, ktorá zabezpečí zmenu branche v modeli Car na základe toho, kde bude auto vrátené, teda:
+        ako dostať/nasetovať zmenu branche z booking.returnBranch do Car.branchCar,
+        aby sa ďalšiemu zákazníkovi zobrazilo auto na tom mieste (branchi), kde ju predchádzajúci vrátil... */
 
         return booking;
     }
